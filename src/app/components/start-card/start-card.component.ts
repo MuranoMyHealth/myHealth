@@ -63,6 +63,8 @@ export class StartCardComponent implements OnInit, OnDestroy {
     return retMessage;
   }
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    if (this.subscription && this.subscription.unsubscribe) {
+      this.subscription.unsubscribe();
+    }
   }
 }

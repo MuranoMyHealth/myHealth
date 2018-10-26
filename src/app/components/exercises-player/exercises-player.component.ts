@@ -1,13 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatHorizontalStepper } from '@angular/material';
+import { Exercise } from '../../models/Exercise';
 
-
-class Exercise {
-  constructor(
-    name: string = 'The Exercise',
-    imgUrl: string = ''
-  ) {}
-}
 
 const exercises: Exercise[] = [
   new Exercise(),
