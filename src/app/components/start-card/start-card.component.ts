@@ -3,7 +3,7 @@ import { SchedulerService } from 'src/app/services/scheduler.service';
 import { ReqNextSession } from 'src/app/requests/req-next-session';
 import { NextSession } from 'src/app/responses/next-session';
 import { Observable, Subscription, interval } from 'rxjs';
-import { map, flatMap } from 'rxjs/operators';
+import { map, flatMap, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Sessions } from 'src/app/responses/sessions';
 import { ExercisesService } from 'src/app/services/exercises.service';
@@ -32,13 +32,13 @@ export class StartCardComponent implements OnInit, OnDestroy {
     req.timeZone = 180;
     this.scheduler.getNextSession(req).subscribe((x) => {
       this.nextSession = x;
-      this.sessions = this.exercise.getExercises(new ReqExercises(this.nextSession.userId));
-      this.runCounter();
     }, (e) => {
       this.nextSession = new NextSession();
     }).add(() => {
-      this.sessions = this.exercise.getExercises(new ReqExercises(this.nextSession.userId));
-      this.runCounter();
+      this.exercise.getExercises(new ReqExercises(this.nextSession.userId))
+      .subscribe(x => {
+        this.sessions = x;
+      }).add(x => this.runCounter());
     });
   }
   private runCounter() {

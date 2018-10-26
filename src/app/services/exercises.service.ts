@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ReqExercises } from '../requests/req-exercises';
 import { Sessions } from '../responses/sessions';
+import { andObservables } from '@angular/router/src/utils/collection';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,23 +16,16 @@ export class ExercisesService {
   private sessions: Sessions = new Sessions;
   constructor(private http: HttpClient) {
   }
-  getExercises(req: ReqExercises): Sessions {
-    const param = new HttpParams;
-    param.set('userId', req.userId);
-    this.http.get<Sessions>(this.rootUrl + '/exercises', { params: param })
-      .subscribe(
-        x => this.sessions = x, e => {
-          if (!this.sessions) {
-            this.sessions = new Sessions;
-          }
-        });
+  getExercises(req: ReqExercises): Observable<Sessions> {
     if (!this.sessions) {
       const data = localStorage.getItem(this.lsName);
       if (data) {
         this.sessions = JSON.parse(localStorage.getItem(this.lsName));
       }
-    } else {
-      return this.sessions;
+      const param = new HttpParams;
+      param.set('userId', req.userId);
+      return this.http.get<Sessions>(this.rootUrl + '/exercises', { params: param }).pipe(map(x => this.sessions ));
     }
+     return of(this.sessions);
   }
 }
