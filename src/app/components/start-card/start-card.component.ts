@@ -35,12 +35,16 @@ export class StartCardComponent implements OnInit, OnDestroy {
     }, (e) => {
       this.nextSession = new NextSession();
     }).add(() => {
-      this.exercise.getExercises(new ReqExercises(this.nextSession.userId))
-      .subscribe(x => {
-        this.sessions = x;
-      }).add(x => this.runCounter());
+      this.getExercise();
     });
   }
+  private getExercise() {
+    this.exercise.getExercises(new ReqExercises(this.nextSession.userId))
+      .subscribe(x => {
+        this.sessions = x;
+      }, e => this.getExercise()).add(x => this.runCounter());
+  }
+
   private runCounter() {
     this.count = 3600;
     const date = new Date();
