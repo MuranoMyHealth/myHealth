@@ -8,8 +8,14 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { AppToolbarComponent } from './components/app-toolbar/app-toolbar.component';
 import { StartCardComponent} from './components/start-card/start-card.component';
-import { MatButtonModule, MatCheckboxModule, MatCardModule, MatToolbarModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
+import { ExercisesPlayerComponent } from './components/exercises-player/exercises-player.component';
+
+import {
+  MatButtonModule, MatCheckboxModule, MatCardModule,
+  MatToolbarModule, MatStepperModule
+} from '@angular/material';
+import { SettingsComponent } from './components/settings/settings.component';
 
 
 @NgModule({
@@ -17,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     AppToolbarComponent,
     StartCardComponent,
-
+    ExercisesPlayerComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +35,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatCheckboxModule,
     MatCardModule,
     MatToolbarModule,
-    HttpClientModule
+    HttpClientModule,
+    MatStepperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

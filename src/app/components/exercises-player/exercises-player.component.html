@@ -1,0 +1,7 @@
+<mat-horizontal-stepper linear [selectedIndex]="currentStep" (selectionChange)="stepChanged()" #stepper>
+  <mat-step *ngFor="let step of steps; index as i" [completed]="i <= currentStep" [optional]="false" [editable]="false">
+    <mat-card>
+      <span>Exercises animator {{i}}</span>
+    </mat-card>
+  </mat-step>
+</mat-horizontal-stepper>
