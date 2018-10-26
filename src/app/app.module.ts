@@ -6,13 +6,14 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { MainCardComponent } from './components/main-card/main-card.component';
-import { MatButtonModule, MatCheckboxModule, MatCardModule } from '@angular/material';
+import { AppToolbarComponent } from './components/app-toolbar/app-toolbar.component';
+import { MatButtonModule, MatCheckboxModule, MatCardModule, MatToolbarModule } from '@angular/material';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainCardComponent
+    AppToolbarComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +22,8 @@ import { MatButtonModule, MatCheckboxModule, MatCardModule } from '@angular/mate
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     MatButtonModule,
     MatCheckboxModule,
-    MatCardModule
+    MatCardModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
