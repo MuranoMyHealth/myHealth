@@ -1,22 +1,39 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
-import { NextSession } from '../responses/next-session';
+import { UserData } from '../responses/user-data';
 import { ReqNextSession } from '../requests/req-next-session';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
+import { AppConfigService } from './app-config.service';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class SchedulerService {
-
-  constructor(private http: HttpClient) { }
-  getNextSession(req: ReqNextSession): Observable<NextSession> {
-    const params = new HttpParams();
-    params.set('id', req.id);
-    params.set('name', req.name);
-    params.set('timeZone', req.timeZone.toString());
-    return this.http.get<NextSession>('scheduler', { params: params });
+  private lsName = 'userData';
+  private userData: UserData;
+  constructor(private http: HttpClient, private appConfig: AppConfigService) { }
+  getNextSession(req: ReqNextSession): Observable<UserData> {
+    if (!this.userData) {
+      const data = localStorage.getItem(this.lsName);
+      if (data && data !== 'undefined') {
+        this.userData = JSON.parse(localStorage.getItem(this.lsName));
+      }
+      const params = new HttpParams();
+      params.set('id', req.id);
+      params.set('name', req.name);
+      params.set('timeZone', req.timeZone.toString());
+      return this.http.get<UserData>(this.appConfig.rootUrl + '/scheduler', { params: params })
+        .pipe(tap(x => this.userData = x)
+          , catchError(x => of(new UserData(req.id, req.name))))
+        .pipe(tap(x => {
+          this.userData = x;
+          localStorage.setItem(this.lsName, JSON.stringify(this.userData));
+        }));
+    } else {
+      return of(this.userData);
+    }
   }
 }

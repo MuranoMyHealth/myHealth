@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SchedulerService } from 'src/app/services/scheduler.service';
 import { ReqNextSession } from 'src/app/requests/req-next-session';
-import { NextSession } from 'src/app/responses/next-session';
+import { UserData } from 'src/app/responses/user-data';
 import { Observable, Subscription, interval } from 'rxjs';
 import { map, flatMap, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -17,7 +17,7 @@ import { ReqExercises } from 'src/app/requests/req-exercises';
 export class StartCardComponent implements OnInit, OnDestroy {
 
   private exercises = '/exercises';
-  private nextSession: NextSession;
+  private nextSession: UserData;
   private counter$: Observable<number>;
   private subscription: Subscription;
   private message: string;
@@ -33,7 +33,7 @@ export class StartCardComponent implements OnInit, OnDestroy {
     this.scheduler.getNextSession(req).subscribe((x) => {
       this.nextSession = x;
     }, (e) => {
-      this.nextSession = new NextSession();
+      this.nextSession = new UserData();
     }).add(() => {
       this.getExercise();
     });
