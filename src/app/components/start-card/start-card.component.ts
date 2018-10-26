@@ -25,7 +25,12 @@ export class StartCardComponent implements OnInit, OnDestroy {
     req.id = 'Bar';
     req.name = 'Foo';
     req.timeZone = 180;
-    this.session = this.scheduler.getNextSession(req);
+    this.scheduler.getNextSession(req).subscribe((x) => {
+      this.session = x;
+      this.runCounter();
+    });
+  }
+  private runCounter() {
     this.counter$ = interval(1000).pipe(map((x) => {
       return this.session.lostSeconds -= 1;
     }));
@@ -37,11 +42,15 @@ export class StartCardComponent implements OnInit, OnDestroy {
       }
     });
   }
+
   redirectToExec() {
     this.router.navigate([this.exercises]);
   }
   dhms(x: number): string {
-    const watch = [(x - x % (60 * 60)) / (60 * 60), (x % (60 * 60) - x % 60) / 60, x % (60)];
+    const watch = [
+      (x - x % (60 * 60)) / (60 * 60),
+      (x % (60 * 60) - x % 60) / 60,
+      x % (60)];
     let retMessage = '';
     watch.forEach((element, i) => {
       if (element !== 0) {
