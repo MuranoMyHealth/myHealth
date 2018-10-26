@@ -192,9 +192,25 @@
   dependencies:
     tslib "^1.9.0"
 
+"@angular/pwa@^0.10.3":
+  version "0.10.3"
+  resolved "https://registry.yarnpkg.com/@angular/pwa/-/pwa-0.10.3.tgz#1f33abf026dc86fde6607fdd9497d14c0f90b3bf"
+  dependencies:
+    "@angular-devkit/core" "7.0.3"
+    "@angular-devkit/schematics" "7.0.3"
+    "@schematics/angular" "7.0.3"
+    parse5-html-rewriting-stream "5.1.0"
+    rxjs "6.3.3"
+
 "@angular/router@~7.0.0":
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/@angular/router/-/router-7.0.1.tgz#2085466c47a8efad576b4310db191c3e338cacef"
+  dependencies:
+    tslib "^1.9.0"
+
+"@angular/service-worker@~7.0.0":
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/@angular/service-worker/-/service-worker-7.0.1.tgz#773ad7e758e29a5ad8b5627636480a4c2d74568f"
   dependencies:
     tslib "^1.9.0"
 
@@ -4394,11 +4410,24 @@ parse-json@^4.0.0:
     error-ex "^1.3.1"
     json-parse-better-errors "^1.0.1"
 
+parse5-html-rewriting-stream@5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/parse5-html-rewriting-stream/-/parse5-html-rewriting-stream-5.1.0.tgz#63f92c958764aea8cbe3aa68f2e5895c32068ab8"
+  dependencies:
+    parse5 "^5.1.0"
+    parse5-sax-parser "^5.1.0"
+
+parse5-sax-parser@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/parse5-sax-parser/-/parse5-sax-parser-5.1.0.tgz#ec234d23223a8054a74ff173aa3dc2da74c5bbd9"
+  dependencies:
+    parse5 "^5.1.0"
+
 parse5@4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/parse5/-/parse5-4.0.0.tgz#6d78656e3da8d78b4ec0b906f7c08ef1dfe3f608"
 
-parse5@^5.0.0:
+parse5@^5.0.0, parse5@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/parse5/-/parse5-5.1.0.tgz#c59341c9723f414c452975564c7c00a68d58acd2"
 
