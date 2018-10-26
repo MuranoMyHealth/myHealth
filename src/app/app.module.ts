@@ -7,13 +7,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { AppToolbarComponent } from './components/app-toolbar/app-toolbar.component';
-import { MatButtonModule, MatCheckboxModule, MatCardModule, MatToolbarModule } from '@angular/material';
+import { ExercisesPlayerComponent } from './components/exercises-player/exercises-player.component';
+
+import {
+  MatButtonModule, MatCheckboxModule, MatCardModule,
+  MatToolbarModule, MatStepperModule
+} from '@angular/material';
+import { SettingsComponent } from './components/settings/settings.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AppToolbarComponent
+    AppToolbarComponent,
+    ExercisesPlayerComponent,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +31,8 @@ import { MatButtonModule, MatCheckboxModule, MatCardModule, MatToolbarModule } f
     MatButtonModule,
     MatCheckboxModule,
     MatCardModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatStepperModule
   ],
   providers: [],
   bootstrap: [AppComponent]
