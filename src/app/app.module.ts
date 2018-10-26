@@ -9,13 +9,15 @@ import { environment } from '../environments/environment';
 import { AppToolbarComponent } from './components/app-toolbar/app-toolbar.component';
 import { StartCardComponent} from './components/start-card/start-card.component';
 import { MatButtonModule, MatCheckboxModule, MatCardModule, MatToolbarModule } from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     AppToolbarComponent,
-    StartCardComponent
+    StartCardComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,8 @@ import { MatButtonModule, MatCheckboxModule, MatCardModule, MatToolbarModule } f
     MatButtonModule,
     MatCheckboxModule,
     MatCardModule,
-    MatToolbarModule
+    MatToolbarModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
