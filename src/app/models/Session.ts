@@ -1,5 +1,5 @@
 import { Exercise } from './Exercise';
 
 export class Session {
-  constructor(list: Exercise[], hour: 17) { }
+  constructor(public list: Exercise[] = [new Exercise(), new Exercise(), new Exercise()], public hour: number = 0) { }
 }

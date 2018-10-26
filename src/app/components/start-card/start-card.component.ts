@@ -5,6 +5,9 @@ import { NextSession } from 'src/app/responses/next-session';
 import { Observable, Subscription, interval } from 'rxjs';
 import { map, flatMap } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { Sessions } from 'src/app/responses/sessions';
+import { ExercisesService } from 'src/app/services/exercises.service';
+import { ReqExercises } from 'src/app/requests/req-exercises';
 
 @Component({
   selector: 'mh-start-card',
@@ -14,11 +17,13 @@ import { Router } from '@angular/router';
 export class StartCardComponent implements OnInit, OnDestroy {
 
   private exercises = '/exercises';
-  private session: NextSession;
+  private nextSession: NextSession;
   private counter$: Observable<number>;
   private subscription: Subscription;
   private message: string;
-  constructor(private scheduler: SchedulerService, private router: Router) { }
+  private sessions: Sessions;
+  count = 0;
+  constructor(private scheduler: SchedulerService, private exercise: ExercisesService, private router: Router) { }
 
   ngOnInit() {
     const req = new ReqNextSession;
@@ -26,13 +31,31 @@ export class StartCardComponent implements OnInit, OnDestroy {
     req.name = 'Foo';
     req.timeZone = 180;
     this.scheduler.getNextSession(req).subscribe((x) => {
-      this.session = x;
+      this.nextSession = x;
+      this.sessions = this.exercise.getExercises(new ReqExercises(this.nextSession.userId));
+      this.runCounter();
+    }, (e) => {
+      this.nextSession = new NextSession();
+    }).add(() => {
+      this.sessions = this.exercise.getExercises(new ReqExercises(this.nextSession.userId));
       this.runCounter();
     });
   }
   private runCounter() {
+    this.count = 3600;
+    const date = new Date();
+    const hour = new Date().getHours();
+    const ss = this.sessions.list.find(s => s.hour === hour);
+    if (ss) {
+      this.count -= (date.getMinutes() * 60 + date.getSeconds());
+    }
     this.counter$ = interval(1000).pipe(map((x) => {
-      return this.session.lostSeconds -= 1;
+      if (ss) {
+        return this.count -= 1;
+      } else {
+        this.count = 0;
+        return this.count;
+      }
     }));
     this.subscription = this.counter$.subscribe((x) => {
       this.message = this.dhms(x);

@@ -1,5 +1,3 @@
 export class NextSession {
-    userId: string;
-    userName: string;
-    lostSeconds: number;
+    constructor(public userId: string = 'Tor', public userName: string = 'Foo', public lostSeconds: number = 180) { }
 }

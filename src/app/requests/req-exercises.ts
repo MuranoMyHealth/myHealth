@@ -1,3 +1,3 @@
 export class ReqExercises {
-    userId: string;
+   constructor(public userId: string = 'Foo') { }
 }

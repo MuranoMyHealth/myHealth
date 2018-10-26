@@ -1,5 +1,5 @@
 import { Session } from '../models/Session';
 
 export class Sessions {
-    list: Session[];
+    constructor(public list: Session[] = [new Session(), new Session()]) { }
 }
