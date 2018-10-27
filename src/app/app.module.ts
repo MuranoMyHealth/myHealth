@@ -11,9 +11,13 @@ import { ExercisesPlayerComponent } from './components/exercises-player/exercise
 
 import {
   MatButtonModule, MatCheckboxModule, MatCardModule,
-  MatToolbarModule, MatStepperModule
+  MatToolbarModule, MatStepperModule, MatProgressSpinnerModule,
+  MatIconModule
 } from '@angular/material';
 import { SettingsComponent } from './components/settings/settings.component';
+import { ProgressCountdownComponent } from './components/progress-countdown/progress-countdown.component';
+import { DoExercisesPageComponent } from './components/do-exercises-page/do-exercises-page.component';
+import { ExercisesEndComponent } from './components/exercises-end/exercises-end.component';
 
 
 @NgModule({
@@ -21,7 +25,10 @@ import { SettingsComponent } from './components/settings/settings.component';
     AppComponent,
     AppToolbarComponent,
     ExercisesPlayerComponent,
-    SettingsComponent
+    SettingsComponent,
+    ProgressCountdownComponent,
+    DoExercisesPageComponent,
+    ExercisesEndComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +39,9 @@ import { SettingsComponent } from './components/settings/settings.component';
     MatCheckboxModule,
     MatCardModule,
     MatToolbarModule,
-    MatStepperModule
+    MatStepperModule,
+    MatProgressSpinnerModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
