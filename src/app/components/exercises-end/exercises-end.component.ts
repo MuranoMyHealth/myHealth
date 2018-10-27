@@ -15,7 +15,8 @@ export class ExercisesEndComponent implements OnInit {
   constructor(private exercise: ExercisesService, private scheduler: SchedulerService) { }
 
   ngOnInit() {
-    this.exercise.getCurrentSession(new ReqExercises(this.scheduler.fromStore().userId))
+    this.exercise
+      .getCurrentSession(new ReqExercises(this.scheduler.fromStore().token))
       .subscribe(x => {
         this.session = x;
       });
