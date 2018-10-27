@@ -13,7 +13,7 @@ export class StartTimeComponent implements OnInit, OnDestroy {
   @Output() ender = new EventEmitter();
   private counter$: Observable<number>;
   private subscription: Subscription;
-  private message: string;
+  public message: string;
   constructor() { }
 
   ngOnInit() {

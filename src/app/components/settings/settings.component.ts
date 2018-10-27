@@ -17,7 +17,7 @@ export class SettingsComponent implements OnInit {
   hoursTo: Hour[] = [];
   from: number;
   to: number;
-  slientMode = false;
+  silentMode = false;
   userData: UserData;
   constructor(private scheduler: SchedulerService) { }
 
@@ -29,7 +29,7 @@ export class SettingsComponent implements OnInit {
     this.userData = this.scheduler.fromStore();
     this.to = this.userData.to;
     this.from = this.userData.from;
-    this.slientMode = this.userData.slientMode;
+    this.silentMode = this.userData.slientMode;
   }
   onChange() {
     if (this.from != null) {
@@ -48,7 +48,7 @@ export class SettingsComponent implements OnInit {
       this.userData.from = this.from;
       this.userData.to = this.to;
     }
-    this.userData.slientMode = this.slientMode;
+    this.userData.slientMode = this.silentMode;
     this.scheduler.putUserData(this.userData);
   }
 }

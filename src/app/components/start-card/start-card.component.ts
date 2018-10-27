@@ -19,7 +19,7 @@ export class StartCardComponent implements OnInit {
 
   private exercises = '/exercises';
   private nextSession: UserData;
-  private session: Session;
+  public session: Session;
   count = 0;
   constructor(private scheduler: SchedulerService, private exercise: ExercisesService, private router: Router) { }
 
