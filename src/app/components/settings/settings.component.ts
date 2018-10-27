@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { range } from 'rxjs';
+import { SchedulerService } from 'src/app/services/scheduler.service';
+import { UserData } from 'src/app/responses/user-data';
 
 class Hour {
   constructor(public value: number = 0, public viewValue: string = '0:00') { }
@@ -15,13 +17,19 @@ export class SettingsComponent implements OnInit {
   hoursTo: Hour[] = [];
   from: number;
   to: number;
-  constructor() { }
+  slientMode = false;
+  userData: UserData;
+  constructor(private scheduler: SchedulerService) { }
 
   ngOnInit() {
     range(0, 24).subscribe(x => {
       this.hoursFrom.push(new Hour(x, x + ':00'));
       this.hoursTo.push(new Hour(x, x + ':00'));
     });
+    this.userData = this.scheduler.fromStore();
+    this.to = this.userData.to;
+    this.from = this.userData.from;
+    this.slientMode = this.userData.slientMode;
   }
   onChange() {
     if (this.from != null) {
@@ -35,6 +43,12 @@ export class SettingsComponent implements OnInit {
       range(0, this.to === 0 ? 24 : this.to).subscribe(x => {
         this.hoursFrom.push(new Hour(x, x + ':00'));
       });
+    }
+    if (this.to != null && this.from != null) {
+      this.userData.from = this.from;
+      this.userData.to = this.to;
+      this.userData.slientMode = this.slientMode;
+      this.scheduler.putUserData(this.userData);
     }
   }
 

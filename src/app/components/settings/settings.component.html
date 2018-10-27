@@ -21,7 +21,7 @@
     </mat-form-field>
     <mat-divider>
     </mat-divider>
-    <div><mat-slide-toggle>Режим «Не беспокоить»</mat-slide-toggle></div>
+    <div><mat-slide-toggle [(checked)]="silentMode" (change)="onChange()">Режим «Не беспокоить»</mat-slide-toggle></div>
   </mat-card-content>
   <mat-card-actions>
   </mat-card-actions>
