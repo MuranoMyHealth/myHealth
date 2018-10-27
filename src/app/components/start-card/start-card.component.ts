@@ -2,8 +2,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { SchedulerService } from 'src/app/services/scheduler.service';
 import { ReqNextSession } from 'src/app/requests/req-next-session';
 import { UserData } from 'src/app/responses/user-data';
-import { Observable, Subscription, interval } from 'rxjs';
-import { map, flatMap, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { ExercisesService } from 'src/app/services/exercises.service';
 import { ReqExercises } from 'src/app/requests/req-exercises';
@@ -35,7 +33,7 @@ export class StartCardComponent implements OnInit {
     });
   }
   private getExercise() {
-    this.exercise.getCurrentSession(new ReqExercises(this.nextSession.userId))
+    this.exercise.getCurrentSession(new ReqExercises(this.nextSession.token))
       .subscribe(x => {
         this.session = x;
       });
