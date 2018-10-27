@@ -13,9 +13,10 @@ import { ExercisesPlayerComponent } from './components/exercises-player/exercise
 
 import {
   MatButtonModule, MatCheckboxModule, MatCardModule,
-  MatToolbarModule, MatStepperModule, MatIcon, MatIconModule, MatSelectModule, MatDividerModule, MatSlideToggleModule
+  MatToolbarModule, MatStepperModule, MatIcon, MatIconModule, MatSelectModule, MatDividerModule, MatSlideToggleModule, MatChipsModule
 } from '@angular/material';
 import { SettingsComponent } from './components/settings/settings.component';
+import { PeopleCountComponent } from './components/people-count/people-count.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { SettingsComponent } from './components/settings/settings.component';
     AppToolbarComponent,
     StartCardComponent,
     ExercisesPlayerComponent,
-    SettingsComponent
+    SettingsComponent,
+    PeopleCountComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +42,8 @@ import { SettingsComponent } from './components/settings/settings.component';
     MatIconModule,
     MatSelectModule,
     MatDividerModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
