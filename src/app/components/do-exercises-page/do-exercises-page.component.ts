@@ -30,9 +30,7 @@ export class DoExercisesPageComponent implements AfterViewInit, OnInit {
   }
 
   ngAfterViewInit() {
-    if (this.uiState === this.UI_STATES.COUNTDOWN) {
       this.countdown.start();
-    }
   }
 
   switchToExercises() {

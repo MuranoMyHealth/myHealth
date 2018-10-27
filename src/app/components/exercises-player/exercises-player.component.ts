@@ -6,7 +6,8 @@ import {
   ViewChild,
   ViewChildren,
   QueryList,
-  EventEmitter
+  EventEmitter,
+  ElementRef
 } from '@angular/core';
 import { MatHorizontalStepper } from '@angular/material';
 import { StepperSelectionEvent } from '@angular/cdk/stepper';
@@ -20,6 +21,7 @@ import { ProgressCountdownComponent } from '../progress-countdown/progress-count
 })
 export class ExercisesPlayerComponent implements AfterViewInit {
   @ViewChild('stepper') stepper: MatHorizontalStepper;
+  @ViewChild('audioCtrl') audioCtrl: ElementRef;
   @ViewChildren(ProgressCountdownComponent) timers: QueryList<ProgressCountdownComponent>;
   @Input('exercises') steps: [] = [];
   @Output() endOfExercices: EventEmitter<void> = new EventEmitter();
@@ -36,6 +38,7 @@ export class ExercisesPlayerComponent implements AfterViewInit {
       return;
     }
 
+    this.playSound();
     this.stepper.next();
   }
 
@@ -51,11 +54,17 @@ export class ExercisesPlayerComponent implements AfterViewInit {
   }
 
   runExercises() {
+    this.playSound();
     this.getTimer(0).start();
   }
 
   sequenceEnded() {
+    this.playSound();
     this.endOfExercices.emit();
+  }
+
+  playSound() {
+    this.audioCtrl.nativeElement.play();
   }
 
   reset() {
