@@ -76,5 +76,4 @@ export class ExercisesPlayerComponent implements AfterViewInit {
   getTimer(index: number = 0) {
     return this.timers.find((t, i) => i === index);
   }
-
 }
