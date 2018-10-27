@@ -3,9 +3,10 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { ReqExercises } from '../requests/req-exercises';
 import { Sessions } from '../responses/sessions';
 import { Observable } from 'rxjs';
-import { tap, catchError } from 'rxjs/operators';
+import { tap, catchError, map } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { AppConfigService } from './app-config.service';
+import { Session } from '../models/Session';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,18 @@ export class ExercisesService {
   private rootUrl: string;
   private sessions: Sessions;
   constructor(private http: HttpClient, private appConfig: AppConfigService) { }
+  getCurrentSession(req: ReqExercises): Observable<Session> {
+    return this.getExercises(req).pipe(map(x => {
+      const date = new Date();
+      const hour = new Date().getHours();
+      const ss = this.sessions.list.find(s => s.hour === hour);
+      if (ss) {
+        return ss;
+      } else {
+        return new Session();
+      }
+    }));
+  }
   getExercises(req: ReqExercises): Observable<Sessions> {
     if (!this.sessions) {
       const data = localStorage.getItem(this.lsName);

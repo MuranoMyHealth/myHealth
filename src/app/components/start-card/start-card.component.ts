@@ -5,9 +5,9 @@ import { UserData } from 'src/app/responses/user-data';
 import { Observable, Subscription, interval } from 'rxjs';
 import { map, flatMap, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { Sessions } from 'src/app/responses/sessions';
 import { ExercisesService } from 'src/app/services/exercises.service';
 import { ReqExercises } from 'src/app/requests/req-exercises';
+import { Session } from 'src/app/models/Session';
 
 @Component({
   selector: 'mh-start-card',
@@ -21,7 +21,7 @@ export class StartCardComponent implements OnInit, OnDestroy {
   private counter$: Observable<number>;
   private subscription: Subscription;
   private message: string;
-  private sessions: Sessions;
+  private session: Session;
   count = 0;
   constructor(private scheduler: SchedulerService, private exercise: ExercisesService, private router: Router) { }
 
@@ -39,22 +39,20 @@ export class StartCardComponent implements OnInit, OnDestroy {
     });
   }
   private getExercise() {
-    this.exercise.getExercises(new ReqExercises(this.nextSession.userId))
+    this.exercise.getCurrentSession(new ReqExercises(this.nextSession.userId))
       .subscribe(x => {
-        this.sessions = x;
-      }, e => this.getExercise()).add(x => this.runCounter());
+        this.session = x;
+      }).add(x => this.runCounter());
   }
 
   private runCounter() {
     this.count = 3600;
     const date = new Date();
-    const hour = new Date().getHours();
-    const ss = this.sessions.list.find(s => s.hour === hour);
-    if (ss) {
+    if (this.session) {
       this.count -= (date.getMinutes() * 60 + date.getSeconds());
     }
     this.counter$ = interval(1000).pipe(map((x) => {
-      if (ss) {
+      if (this.session) {
         return this.count -= 1;
       } else {
         this.count = 0;
