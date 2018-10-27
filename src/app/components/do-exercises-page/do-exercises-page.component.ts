@@ -24,7 +24,9 @@ export class DoExercisesPageComponent implements AfterViewInit, OnInit {
 
   ngOnInit() {
     const user = this.scheduler.fromStore();
-    this.exercise.getCurrentSession(new ReqExercises(user.userId)).subscribe(x => this.exercises =  x.list);
+    this.exercise
+      .getCurrentSession(new ReqExercises(user.token))
+      .subscribe(x => this.exercises =  x.list);
   }
 
   ngAfterViewInit() {
