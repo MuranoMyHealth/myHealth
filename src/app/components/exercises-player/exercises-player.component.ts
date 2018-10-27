@@ -32,8 +32,6 @@ export class ExercisesPlayerComponent implements AfterViewInit {
   @ViewChildren(ProgressCountdownComponent) timers: QueryList<ProgressCountdownComponent>;
   @Input('exercises') steps: [] = [];
   @Output() endOfExercices: EventEmitter<void> = new EventEmitter();
-
-
   constructor() {
   }
 
