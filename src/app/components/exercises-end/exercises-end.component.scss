@@ -28,3 +28,12 @@ mat-horizontal-stepper {
     max-width: 100%;
   }
 }
+
+.button-container {
+  margin-top: 40px;
+}
+
+[mat-raised-button] {
+  border-radius: 20px;
+  text-transform: uppercase;
+}

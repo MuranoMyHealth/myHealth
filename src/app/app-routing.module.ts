@@ -9,7 +9,6 @@ import { SettingsComponent } from './components/settings/settings.component';
 const routes: Routes = [
   { path: '', redirectTo: '/start', pathMatch: 'full' },
   { path: 'start', component: StartCardComponent },
-  { path: 'settings', component: SettingsComponent },
   { path: 'exercises', component: DoExercisesPageComponent },
   { path: 'settings', component: SettingsComponent }
 ];

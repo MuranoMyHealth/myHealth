@@ -1,7 +1,37 @@
-<mat-toolbar color="primary">
-    <a routerLink="../"><mat-icon>reply</mat-icon></a> 
-    <mat-icon>supervisor_account</mat-icon> 
+<mat-toolbar color="primary" [ngSwitch]="uiState">
+  <div class="case-container" *ngSwitchCase="STATES.JOINED_USERS">
+    <mat-icon>supervisor_account</mat-icon>
     <mh-people-count></mh-people-count>
-  <h1>myHealth</h1>
-  <a routerLink="/settings"><mat-icon>settings</mat-icon></a> 
+    <div class="fill-remaining-space"></div>
+    <a class="link-icon" routerLink="/start">
+      <mat-icon>home</mat-icon>
+    </a>
+  </div>
+
+  <div class="case-container" *ngSwitchCase="STATES.BACK_AND_SETTINGS">
+    <a class="link-icon" routerLink="/start">
+      <mat-icon>arrow_back</mat-icon>
+    </a>
+    <div class="fill-remaining-space"></div>
+    <a class="link-icon" routerLink="/settings">
+      <mat-icon>settings</mat-icon>
+    </a>
+  </div>
+
+  <div class="case-container" *ngSwitchCase="STATES.BACK_AND_SETTINGS_TITLE">
+    <a class="link-icon" routerLink="/start">
+      <mat-icon>arrow_back</mat-icon>
+    </a>
+    <span class="settings-title">Настройки</span>
+  </div>
+
+  <!-- STATES.LOGO_AND_SETTINGS -->
+  <div class="case-container" *ngSwitchDefault>
+    <span>myHealth</span>
+    <div class="fill-remaining-space"></div>
+    <a class="link-icon" routerLink="/settings">
+      <mat-icon>settings</mat-icon>
+    </a>
+  </div>
+
 </mat-toolbar>
