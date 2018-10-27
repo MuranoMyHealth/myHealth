@@ -1,0 +1,47 @@
+$size: 200px;
+$gutters: 20px;
+$img-size: $size - $gutters * 2;
+
+
+.countdown-wrap {
+  position: relative;
+  margin: auto;
+  width: $size;
+}
+
+.countdown-img {
+  position: absolute;
+  top: $gutters;
+  left: $gutters;
+
+  width: $img-size;
+  height: $img-size;
+
+  border-radius: 50%;
+  overflow: hidden;
+
+  & img {
+    width: $img-size;
+    height: $img-size;
+
+  }
+}
+
+.countdown-timer {
+  text-align: center;
+  color: #000;
+  font-size: 24px;
+  line-height: 28px;
+
+  &.timer-only {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: inline-block;
+    margin: 0;
+    font-size: 60px;
+    line-height: 70px;
+  }
+}

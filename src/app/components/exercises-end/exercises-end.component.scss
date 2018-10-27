@@ -21,10 +21,10 @@ mat-horizontal-stepper {
   flex-direction: column-reverse;
 }
 
-.step-instuctions {
-  margin-bottom: 20px;
-
+.end-exercises {
   text-align: center;
-  font-size: 18px;
-  line-height: 28px;
+
+  & img {
+    max-width: 100%;
+  }
 }

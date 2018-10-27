@@ -1,7 +1,12 @@
-<mat-horizontal-stepper linear [selectedIndex]="currentStep" (selectionChange)="stepChanged()" #stepper>
-  <mat-step *ngFor="let step of steps; index as i" [completed]="i <= currentStep" [optional]="false" [editable]="false">
+<mat-horizontal-stepper linear (selectionChange)="stepChanged($event)" #stepper>
+  <mat-step *ngFor="let step of steps; index as i" [completed]="i <= stepper.selectedIndex" [optional]="false" [editable]="false">
     <mat-card>
-      <span>Exercises animator {{i}}</span>
+      <p class="step-instuctions">{{ step.instructions }}</p>
+      <mh-progress-countdown
+        [duration]="step.duration"
+        [imageSrc]="step.imgUrl"
+        (timeEnd)="nextStep()"
+      ></mh-progress-countdown>
     </mat-card>
   </mat-step>
 </mat-horizontal-stepper>

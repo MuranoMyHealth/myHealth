@@ -1,0 +1,17 @@
+<div class="countdown">
+  <div class="countdown-wrap">
+    <mat-progress-spinner class="countdown-spinner"
+      mode="determinate"
+      [value]="percents"
+      [diameter]="200"
+      [strokeWidth]="6"
+      color="primary">
+    </mat-progress-spinner>
+    <div class="countdown-img" *ngIf="imageSrc">
+      <img src="{{ imageSrc }}">
+    </div>
+    <p class="countdown-timer" [class.timer-only]="!imageSrc">
+      {{ timeLeft }}
+    </p>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="exercises-page">
+  <div *ngIf="uiState === UI_STATES.COUNTDOWN">
+    <p class="step-instuctions">До начала упражнений</p>
+    <mh-progress-countdown #countdown
+      [duration]="2"
+      (timeEnd)="switchToExercises()"
+    ></mh-progress-countdown>
+  </div>
+  <div *ngIf="uiState === UI_STATES.EXERCISES">
+    <mh-exercises-player
+      [exercises]="exercises"
+      (endOfExercices)="switchToEndExercises()"
+    ></mh-exercises-player>
+  </div>
+  <div *ngIf="uiState === UI_STATES.END_EXERCISES">
+    <mh-exercises-end [steps]="exercises"></mh-exercises-end>
+  </div>
+</div>

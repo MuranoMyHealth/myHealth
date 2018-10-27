@@ -47,9 +47,10 @@ export class SettingsComponent implements OnInit {
     if (this.to != null && this.from != null) {
       this.userData.from = this.from;
       this.userData.to = this.to;
-      this.userData.slientMode = this.slientMode;
-      this.scheduler.putUserData(this.userData);
     }
+    this.userData.slientMode = this.slientMode;
+    this.scheduler.putUserData(this.userData);
   }
-
 }
+
+

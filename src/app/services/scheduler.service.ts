@@ -50,6 +50,6 @@ export class SchedulerService {
   putUserData(userData: UserData): any {
     this.http.put(this.appConfig.rootUrl + '/user', userData).subscribe(x => {
       this.storeUserData(userData);
-    })
+    });
   }
 }
