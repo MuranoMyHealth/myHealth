@@ -15,7 +15,9 @@ export class SchedulerService {
   private lsName = 'userData';
   private userData: UserData;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.getNextSession(new ReqNextSession()).subscribe();
+  }
 
   fromStore(): UserData {
     if (!this.userData) {
