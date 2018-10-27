@@ -1,0 +1,20 @@
+<mat-card class="start-card">
+  <mat-card-header>
+    <mat-card-title>
+
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="body">
+    <div *ngIf="count !== 0">
+      <div class="team-text">Коллективные упражнения начнутся через {{message}}</div>
+      <div class="team-or"> или </div>
+    </div>
+      <div class="team-start-now"> начните индивидуальные упражнения прямо сейчас </div>
+    
+    <button class="start-btn" mat-raised-button color="primary" routerLink="/exercises">Начать сейчас</button>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+  </mat-card-actions>
+</mat-card>

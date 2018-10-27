@@ -1,0 +1,30 @@
+::ng-deep {
+  .mat-step-label {
+    display: none !important;
+  }
+
+  .mat-horizontal-stepper-header {
+    pointer-events: none !important;
+  }
+
+  .mat-step-icon {
+    margin-right: 0 !important;
+  }
+
+  .mat-horizontal-content-container {
+    padding: 0 !important;
+  }
+}
+
+mat-horizontal-stepper {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.end-exercises {
+  text-align: center;
+
+  & img {
+    max-width: 100%;
+  }
+}

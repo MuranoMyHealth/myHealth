@@ -1,0 +1,13 @@
+<mat-horizontal-stepper linear [selectedIndex]="steps.length - 1">
+  <mat-step *ngFor="let step of steps" [completed]="true" [optional]="false" [editable]="false">
+    <div class="end-exercises">
+      <img src="assets/images/end-of-exercises.png" alt="">
+      <p>Вы выполнили все упражнения,
+      теперь можно отдохнуть.</p>
+      <p>Возвращайтесь делать  упражнения через 14:36</p>
+    </div>
+  </mat-step>
+  <ng-template matStepperIcon="number">
+      <mat-icon>done</mat-icon>
+    </ng-template>
+</mat-horizontal-stepper>
