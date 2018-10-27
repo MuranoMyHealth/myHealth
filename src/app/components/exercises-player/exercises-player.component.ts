@@ -9,15 +9,6 @@ import {
   EventEmitter
 } from '@angular/core';
 import { MatHorizontalStepper } from '@angular/material';
-import { Exercise } from '../../models/Exercise';
-
-
-const exercises: Exercise[] = [
-  new Exercise(),
-  new Exercise(),
-  new Exercise()
-];
-
 import { StepperSelectionEvent } from '@angular/cdk/stepper';
 import { ProgressCountdownComponent } from '../progress-countdown/progress-countdown.component';
 

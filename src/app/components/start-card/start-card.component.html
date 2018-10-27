@@ -6,8 +6,8 @@
   </mat-card-header>
   <mat-card-content>
     <div class="body">
-    <div *ngIf="count !== 0">
-      <div class="team-text">Коллективные упражнения начнутся через {{message}}</div>
+    <div *ngIf="session">
+      <div class="team-text">Коллективные упражнения начнутся через <mh-start-time *ngIf="session" count="count" ender="redirectToExec()"></mh-start-time></div>
       <div class="team-or"> или </div>
     </div>
       <div class="team-start-now"> начните индивидуальные упражнения прямо сейчас </div>

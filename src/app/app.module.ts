@@ -29,7 +29,7 @@ import { PeopleCountComponent } from './components/people-count/people-count.com
 import { ProgressCountdownComponent } from './components/progress-countdown/progress-countdown.component';
 import { DoExercisesPageComponent } from './components/do-exercises-page/do-exercises-page.component';
 import { ExercisesEndComponent } from './components/exercises-end/exercises-end.component';
-
+import { StartTimeComponent } from './components/start-time/start-time.component';
 
 @NgModule({
     declarations: [
@@ -41,7 +41,8 @@ import { ExercisesEndComponent } from './components/exercises-end/exercises-end.
         PeopleCountComponent,
         ProgressCountdownComponent,
         DoExercisesPageComponent,
-        ExercisesEndComponent
+        ExercisesEndComponent,
+        StartTimeComponent
     ],
     imports: [
         BrowserModule,
