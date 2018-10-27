@@ -1,7 +1,7 @@
 export class UserData {
   public from: number;
   public to: number;
-  public slientMode: boolean;
+  public silenceMode: boolean;
 
   constructor(public token: string = 'Tor') { }
 }
