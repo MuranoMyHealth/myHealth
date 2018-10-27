@@ -1,0 +1,22 @@
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+.case-container {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+}
+
+.settings-title {
+  display: block;
+  width: 100%;
+  margin-right: 30px;
+  text-align: center;
+}
+
+a {
+  color: inherit;
+  line-height: 1;
+  vertical-align: middle;
+}

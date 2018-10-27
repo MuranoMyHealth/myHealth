@@ -5,7 +5,7 @@ import { Sessions } from '../responses/sessions';
 import { Observable } from 'rxjs';
 import { tap, catchError, map } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { AppConfigService } from './app-config.service';
+import { environment } from 'src/environments/environment';
 import { Session } from '../models/Session';
 
 @Injectable({
@@ -15,7 +15,7 @@ export class ExercisesService {
   readonly lsName = 'execSessions';
   private rootUrl: string;
   private sessions: Sessions;
-  constructor(private http: HttpClient, private appConfig: AppConfigService) { }
+  constructor(private http: HttpClient) { }
   getCurrentSession(req: ReqExercises): Observable<Session> {
     return this.getExercises(req).pipe(map(x => {
       const date = new Date();
@@ -36,7 +36,7 @@ export class ExercisesService {
       }
       const param = new HttpParams;
       param.set('userId', req.userId);
-      return this.http.get<Sessions>(this.appConfig.rootUrl + '/exercises', { params: param })
+      return this.http.get<Sessions>(environment.http_url + '/exercises', { params: param })
         .pipe(tap(x => { this.sessions = x; })
           , catchError(e => {
             return of(new Sessions);

@@ -5,8 +5,7 @@ import { UserData } from '../responses/user-data';
 import { ReqNextSession } from '../requests/req-next-session';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { AppConfigService } from './app-config.service';
-
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +13,7 @@ import { AppConfigService } from './app-config.service';
 export class SchedulerService {
   private lsName = 'userData';
   private userData: UserData;
-  constructor(private http: HttpClient, private appConfig: AppConfigService) { }
+  constructor(private http: HttpClient) { }
   fromStore(): UserData {
     if (!this.userData) {
       const data = localStorage.getItem(this.lsName);
@@ -35,7 +34,7 @@ export class SchedulerService {
       params.set('id', req.id);
       params.set('name', req.name);
       params.set('timeZone', req.timeZone.toString());
-      return this.http.get<UserData>(this.appConfig.rootUrl + '/scheduler', { params: params })
+      return this.http.get<UserData>(environment.http_url  + '/scheduler', { params: params })
         .pipe(tap(x => this.userData = x)
           , catchError(x => of(new UserData(req.id, req.name))))
         .pipe(tap(x => {
@@ -48,7 +47,7 @@ export class SchedulerService {
     localStorage.setItem(this.lsName, data);
   }
   putUserData(userData: UserData): any {
-    this.http.put(this.appConfig.rootUrl + '/user', userData).subscribe(x => {
+    this.http.put(environment.http_url  + '/user', userData).subscribe(x => {
       this.storeUserData(userData);
     });
   }
