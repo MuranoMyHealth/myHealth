@@ -31,17 +31,17 @@ export class SchedulerService {
       return of(ret);
     } else {
       const params = new HttpParams();
-      return this.http.post<UserData>(environment.http_url  + '/Notification/subscribe', req)
+      return this.http.post<UserData>(environment.http_url  + '/Notification/logon', req)
         .pipe(tap(x => this.userData = x)
           , catchError(x => of(new UserData(req.token))))
         .pipe(tap(x => {
           this.userData = x;
-          localStorage.setItem(this.lsName, JSON.stringify(this.userData));
+          this.storeUserData(this.userData);
         }));
     }
   }
   private storeUserData(data) {
-    localStorage.setItem(this.lsName, data);
+    localStorage.setItem(this.lsName, JSON.stringify(data));
   }
   putUserData(userData: UserData): any {
     this.http.post(environment.http_url  + '/Notification/update', userData).subscribe(x => {
