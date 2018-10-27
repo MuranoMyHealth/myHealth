@@ -1,0 +1,47 @@
+:host {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+p {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.title-label {
+  margin: 5px 0;
+}
+
+.dash-seporator {
+  margin: 0 10px;
+  display: inline-block;
+}
+
+.settings-content {
+  flex: 1;
+}
+
+.settings-app-info {
+  text-align: center;
+  line-height: 1.5;
+}
+
+.settings-section {
+  padding: 15px 0;
+}
+
+.setting-cols {
+  display: table;
+  width: 100%;
+}
+
+.setting-left-col,
+.setting-right-col {
+  display: table-cell;
+  width: 50%;
+}
+
+.setting-right-col {
+  text-align: right;
+}
