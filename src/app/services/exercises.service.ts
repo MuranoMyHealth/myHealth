@@ -14,13 +14,13 @@ import { Session } from '../models/Session';
 export class ExercisesService {
   readonly lsName = 'execSessions';
   private rootUrl: string;
-  private sessions: Sessions;
+  private sessions: Session[];
   constructor(private http: HttpClient) { }
   getCurrentSession(req: ReqExercises): Observable<Session> {
     return this.getExercises(req).pipe(map(x => {
       const date = new Date();
       const hour = new Date().getHours();
-      const ss = this.sessions.list.find(s => s.hour === hour);
+      const ss = this.sessions.find(s => s.hour === hour);
       if (ss) {
         return ss;
       } else {
@@ -28,18 +28,16 @@ export class ExercisesService {
       }
     }));
   }
-  getExercises(req: ReqExercises): Observable<Sessions> {
+  getExercises(req: ReqExercises): Observable<Session[]> {
     if (!this.sessions) {
       const data = localStorage.getItem(this.lsName);
       if (data && data !== 'undefined') {
         this.sessions = JSON.parse(localStorage.getItem(this.lsName));
       }
-      const param = new HttpParams;
-      param.set('userId', req.userId);
-      return this.http.get<Sessions>(environment.http_url + '/exercises', { params: param })
+      return this.http.get<Session[]>(environment.http_url + '/Session')
         .pipe(tap(x => { this.sessions = x; })
           , catchError(e => {
-            return of(new Sessions);
+            return of(new Sessions().list);
           }
           )).pipe(tap((x) => {
             this.sessions = x;
