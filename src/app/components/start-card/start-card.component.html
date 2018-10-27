@@ -1,20 +1,22 @@
-<mat-card class="start-card">
-  <mat-card-header>
-    <mat-card-title>
-
-    </mat-card-title>
-  </mat-card-header>
+<mat-card class="start-card fill-remaining-height justify-content-middle">
   <mat-card-content>
     <div class="body">
-    <div *ngIf="session">
-      <div class="team-text">Коллективные упражнения начнутся через <mh-start-time *ngIf="session" count="count" ender="redirectToExec()"></mh-start-time></div>
-      <div class="team-or"> или </div>
-    </div>
-      <div class="team-start-now"> начните индивидуальные упражнения прямо сейчас </div>
-    
-    <button class="start-btn" mat-raised-button color="primary" routerLink="/exercises">Начать сейчас</button>
+      <div *ngIf="session">
+        <p class="text-team">
+          Коллективные упражнения начнутся через
+          <mh-start-time *ngIf="session"
+            count="count" ender="redirectToExec()">
+          </mh-start-time>
+        </p>
+        <p class="text-or">
+          <span>или</span>
+        </p>
+      </div>
+      <p class="text-start-now"> начните индивидуальные упражнения прямо сейчас </p>
+
+      <div class="button-container">
+        <button mat-raised-button color="primary" routerLink="/exercises">Начать сейчас</button>
+      </div>
     </div>
   </mat-card-content>
-  <mat-card-actions>
-  </mat-card-actions>
 </mat-card>

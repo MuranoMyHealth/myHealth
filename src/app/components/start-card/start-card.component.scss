@@ -1,4 +1,44 @@
+:host {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
 [mat-raised-button] {
   border-radius: 20px;
   text-transform: uppercase;
+}
+
+.text-team,
+.text-or,
+.text-start-now {
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: .5px;
+
+  text-align: center;
+}
+
+.text-or {
+  position: relative;
+  margin: 30px 0;
+
+  &:before {
+    content: '';
+    display: block;
+    width: calc(100% + 32px);
+    margin: 0 -16px -.94em;
+
+    border-top: 1px solid #e0e0e0;
+  }
+
+  & span {
+    background-color: #fefefe;
+    display: inline-block;
+    padding: 0 15px;
+  }
+}
+
+.button-container {
+  text-align: center;
 }
