@@ -9,6 +9,7 @@ import { ExercisesService } from 'src/app/services/exercises.service';
 import { ReqExercises } from 'src/app/requests/req-exercises';
 import { Session } from 'src/app/models/Session';
 
+
 @Component({
   selector: 'mh-start-card',
   templateUrl: './start-card.component.html',
@@ -24,9 +25,8 @@ export class StartCardComponent implements OnInit {
 
   ngOnInit() {
     const req = new ReqNextSession;
-    req.id = 'Bar';
-    req.name = 'Foo';
-    req.timeZone = 180;
+    req.token = 'Bar';
+    req.timezone = new Date().getTimezoneOffset();
     this.scheduler.getNextSession(req).subscribe((x) => {
       this.nextSession = x;
     }, (e) => {

@@ -18,5 +18,5 @@ export class PeopleCounterService {
     return this.http.get<RetCount>(environment.http_url  + '/counter')
     .pipe(tap(x => this.lastCount = x.count ), catchError(x => of(new RetCount(this.lastCount))))
     .pipe(tap(x => this.lastCount = x.count));
-  }  
+  }
 }

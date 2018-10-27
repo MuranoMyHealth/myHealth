@@ -31,12 +31,9 @@ export class SchedulerService {
       return of(ret);
     } else {
       const params = new HttpParams();
-      params.set('id', req.id);
-      params.set('name', req.name);
-      params.set('timeZone', req.timeZone.toString());
-      return this.http.get<UserData>(environment.http_url  + '/scheduler', { params: params })
+      return this.http.post<UserData>(environment.http_url  + '/Notification/subscribe', req)
         .pipe(tap(x => this.userData = x)
-          , catchError(x => of(new UserData(req.id, req.name))))
+          , catchError(x => of(new UserData(req.token))))
         .pipe(tap(x => {
           this.userData = x;
           localStorage.setItem(this.lsName, JSON.stringify(this.userData));
@@ -47,8 +44,8 @@ export class SchedulerService {
     localStorage.setItem(this.lsName, data);
   }
   putUserData(userData: UserData): any {
-    this.http.put(environment.http_url  + '/user', userData).subscribe(x => {
+    this.http.put(environment.http_url  + '/Notification/user', userData).subscribe(x => {
       this.storeUserData(userData);
-    });
+    }, e => this.storeUserData(userData));
   }
 }

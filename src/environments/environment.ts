@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  http_url: '',
+  http_url: 'http://localhost:1337',
   ws_url: '',
-  publicKey:"BOGDs4PHqDZsr8cElNDyir-7rcJ57QEuRd0oOwR0ASUgnk5hg5HJ_1lqOncRElRXVdRh99ZlUkAXtnYthAJdtOU"
+  publicKey: 'BOGDs4PHqDZsr8cElNDyir-7rcJ57QEuRd0oOwR0ASUgnk5hg5HJ_1lqOncRElRXVdRh99ZlUkAXtnYthAJdtOU'
 };
 
 /*
