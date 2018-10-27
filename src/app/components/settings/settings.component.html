@@ -1,3 +1,25 @@
-<p>
-  settings works!
-</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title></mat-card-title>
+    <mat-card-subtitle></mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-form-field>
+      <mat-select placeholder="C" (value)="from" name="hf" (change)="onChange()">
+        <mat-option *ngFor="let hf of hoursFrom" [value]="hf.value">
+          {{hf.viewValue}}
+        </mat-option>
+      </mat-select>
+      <mat-select placeholder="По" (value)="to" name="ht" (change)="onChange()">
+        <mat-option *ngFor="let ht of hoursTo" [value]="ht.value">
+          {{ht.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-divider>
+    </mat-divider>
+    <mat-slide-toggle>Режим «Не беспокоить»</mat-slide-toggle>
+  </mat-card-content>
+  <mat-card-actions>
+  </mat-card-actions>
+</mat-card>

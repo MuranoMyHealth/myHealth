@@ -13,7 +13,7 @@ import { ExercisesPlayerComponent } from './components/exercises-player/exercise
 
 import {
   MatButtonModule, MatCheckboxModule, MatCardModule,
-  MatToolbarModule, MatStepperModule, MatIcon, MatIconModule
+  MatToolbarModule, MatStepperModule, MatIcon, MatIconModule, MatSelectModule, MatDividerModule, MatSlideToggleModule
 } from '@angular/material';
 import { SettingsComponent } from './components/settings/settings.component';
 
@@ -38,6 +38,9 @@ import { SettingsComponent } from './components/settings/settings.component';
     HttpClientModule,
     MatStepperModule,
     MatIconModule,
+    MatSelectModule,
+    MatDividerModule,
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
