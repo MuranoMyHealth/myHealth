@@ -25,7 +25,6 @@ export class StartCardComponent implements OnInit {
 
   ngOnInit() {
     const req = new ReqNextSession;
-    req.token = 'Bar';
     req.timezone = new Date().getTimezoneOffset();
     this.scheduler.getNextSession(req).subscribe((x) => {
       this.nextSession = x;
