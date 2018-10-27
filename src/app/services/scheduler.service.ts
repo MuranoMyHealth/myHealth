@@ -44,7 +44,7 @@ export class SchedulerService {
     localStorage.setItem(this.lsName, data);
   }
   putUserData(userData: UserData): any {
-    this.http.put(environment.http_url  + '/Notification/user', userData).subscribe(x => {
+    this.http.post(environment.http_url  + '/Notification/update', userData).subscribe(x => {
       this.storeUserData(userData);
     }, e => this.storeUserData(userData));
   }
