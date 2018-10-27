@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { Observable, Subscription, interval } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { formatNumber } from '@angular/common';
 
 @Component({
   selector: 'mh-start-time',
@@ -45,7 +46,10 @@ export class StartTimeComponent implements OnInit, OnDestroy {
         if (i !== 0 && watch[i - 1] !== 0) {
           retMessage += ' : ';
         }
-        retMessage += element.toString();
+        retMessage += formatNumber(element, 'en-US', '2.0-0');
+      }
+      if (i === 2 && element === 0) {
+        retMessage += ' : 00';
       }
     });
     return retMessage;
