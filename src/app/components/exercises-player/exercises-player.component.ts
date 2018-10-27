@@ -9,15 +9,6 @@ import {
   EventEmitter
 } from '@angular/core';
 import { MatHorizontalStepper } from '@angular/material';
-import { Exercise } from '../../models/Exercise';
-
-
-const exercises: Exercise[] = [
-  new Exercise(),
-  new Exercise(),
-  new Exercise()
-];
-
 import { StepperSelectionEvent } from '@angular/cdk/stepper';
 import { ProgressCountdownComponent } from '../progress-countdown/progress-countdown.component';
 
@@ -74,5 +65,4 @@ export class ExercisesPlayerComponent implements AfterViewInit {
   getTimer(index: number = 0) {
     return this.timers.find((t, i) => i === index);
   }
-
 }

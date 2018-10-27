@@ -4,7 +4,7 @@
       <img src="assets/images/end-of-exercises.png" alt="">
       <p>Вы выполнили все упражнения,
       теперь можно отдохнуть.</p>
-      <p>Возвращайтесь делать  упражнения через 14:36</p>
+      <p>Возвращайтесь делать упражнения через <mh-start-time *ngIf="session" count="count" ender="redirectToExec()"></mh-start-time></p>
       <p class="button-container">
         <button mat-raised-button color="primary" routerLink="/start">Закончить</button>
       </p>
