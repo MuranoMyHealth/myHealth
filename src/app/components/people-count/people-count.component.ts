@@ -13,6 +13,6 @@ export class PeopleCountComponent implements OnInit {
   subs: Subscription;
   constructor(private counter: PeopleCounterService) { }
   ngOnInit() {
-   // interval(this.period).subscribe(x => this.counter.getCount().subscribe(y => this.peopleCount = y.count));
+    interval(this.period).subscribe(x => this.counter.getCount().subscribe(y => this.peopleCount = y.count));
   }
 }

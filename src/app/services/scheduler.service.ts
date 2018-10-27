@@ -45,7 +45,7 @@ export class SchedulerService {
   private processUserDataRequest(
     userData$: Observable<UserData>,
     token: string
-  ):Observable<UserData> {
+  ): Observable<UserData> {
     return userData$
       .pipe(
         tap(res => this.userData = res),
