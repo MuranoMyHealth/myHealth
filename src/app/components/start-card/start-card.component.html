@@ -5,7 +5,7 @@
         <p class="text-team">
           Коллективные упражнения начнутся через
           <mh-start-time *ngIf="session"
-            count="count" ender="redirectToExec()">
+            count="count" (ender)="redirectToExec($event)">
           </mh-start-time>
         </p>
         <p class="text-or">
